@@ -15,8 +15,11 @@ class MovieStore {
       this.movieYear,
       this.movieType
     ).then(res => {
-      this.resultMovies = res.data.Search;
-    });
+		if(res.data.Error === "Movie not found!"){
+			this.resultMovies=[];
+		}else{
+			this.resultMovies = res.data.Search;
+		}});
   };
 
   changeInput(value, id) {
